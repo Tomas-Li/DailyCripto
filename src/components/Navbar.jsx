@@ -12,7 +12,6 @@ const Navbar = () => {
   const [screenSize, setScreenSize] = useState(null);
 
   const navbarKey = useSelector((state => state.navbarKey.navbarKey[0]?.payload || ""))
-  console.log(navbarKey)
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth) //This gives us the screen size!
