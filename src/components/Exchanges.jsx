@@ -29,6 +29,7 @@ const Exchanges = () => {
 
   return (
     <>
+      <Text>Debido a limitaciones del plan gratuito de la API empleada esta pagina no funciona, solo se esta reciclando informacion sobre cryptos pero no se muestra nada sobre mercados</Text>
       <Select
         defaultValue={numberCryptos}
         className='select-time-period' 
