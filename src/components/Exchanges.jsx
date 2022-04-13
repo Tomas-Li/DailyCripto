@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Col, Row, Select } from 'antd';
+import { Col, Row, Select, Typography } from 'antd';
 
 import CryptoPanel from './CryptoPanel';
 import Loader from './Loader'
@@ -29,14 +29,14 @@ const Exchanges = () => {
 
   return (
     <>
-      <Text>Debido a limitaciones del plan gratuito de la API empleada esta pagina no funciona, solo se esta reciclando informacion sobre cryptos pero no se muestra nada sobre mercados</Text>
+      <Typography.Text>Debido a limitaciones del plan gratuito de la API empleada esta pagina no funciona, solo se esta reciclando informacion sobre cryptos pero no se muestra nada sobre mercados</Typography.Text>
       <Select
         defaultValue={numberCryptos}
         className='select-time-period' 
         placeholder="Select number of Cryptos"
         onChange={value => setNumberCryptos(value)}
       >
-        {options.map(choice => <Option key={choice}>{choice}</Option>)}
+        {options.map(choice => <Option key={choice} value={choice}>{choice}</Option>)}
       </Select>
       <Row>
         <Col span={6}>Cryptocurrencies by Ranking</Col>
