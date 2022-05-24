@@ -1,23 +1,33 @@
-import React, { useState, useEffect } from 'react';
+//External imports
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
+//UI
 import { Col, Row, Select, Typography } from 'antd';
 
+//Internal Imports
 import CryptoPanel from './CryptoPanel';
 import Loader from './Loader'
 
+//API
 import { useGetCryptosQuery } from '../services/cryptoApi';
 
+//Actions
 import { navbarChange } from '../app/slice';
 
-
+//Shortcut
 const { Option } = Select;
 
 
 const Exchanges = () => {
-  const [numberCryptos, setNumberCryptos] = useState(1)
+  //Hooks
   const dispatch = useDispatch();
+  
+  //State
+  const [numberCryptos, setNumberCryptos] = useState(1)
+
   const { data:coinList, isFetching } = useGetCryptosQuery(numberCryptos);
-  const uuids = coinList?.data?.coins.map(coin => coin.uuid)
+  const uuids = coinList?.data?.coins?.map(coin => coin.uuid)
 
   const options = [1, 3, 5]
 
@@ -29,7 +39,13 @@ const Exchanges = () => {
 
   return (
     <>
-      <Typography.Text>Debido a limitaciones del plan gratuito de la API empleada esta pagina no funciona, solo se esta reciclando informacion sobre cryptos pero no se muestra nada sobre mercados</Typography.Text>
+      <Typography.Title level={5}>
+        Due to limitations of the *free plan* from the API used, this page is no longer functional as it should. At the moment is reclycling data that could be obtained from other pages through multiples fetch operation. That's why this page has a very limited number of cryptocurrencies (otherwise the API would restrain the connection due to the huge ammount of petitions / the page would take too long to load as there would have to be a timeOut between calls)
+      </Typography.Title>
+      <div className='m5-p5'>
+      <Typography.Text className='m5-p5'>
+        Number of Cryptocurrencies to show:
+      </Typography.Text>
       <Select
         defaultValue={numberCryptos}
         className='select-time-period' 
@@ -38,6 +54,7 @@ const Exchanges = () => {
       >
         {options.map(choice => <Option key={choice} value={choice}>{choice}</Option>)}
       </Select>
+      </div>
       <Row>
         <Col span={6}>Cryptocurrencies by Ranking</Col>
         <Col span={6}>24h Trade Volume</Col>
@@ -46,7 +63,7 @@ const Exchanges = () => {
       </Row>
       <Row>
         <Col span={24}>
-          {uuids?.map(uuid => <CryptoPanel uuid={uuid}/>)}
+          {uuids?.map((uuid,i) => <CryptoPanel uuid={uuid} key={i}/>)}
         </Col>
       </Row>
     </>

@@ -1,0 +1,3 @@
+*When loading the info make a giant ass container (90~100hv) with a <loadingCircle/> (big too). This will solve the footer problem when fetching data (that o avoid rendering the footer while there is no data ; maybe a new state that controls this)
+
+*Opcion de cambiar Colores-theme de antd (Requiere investigar mas la documentacion)

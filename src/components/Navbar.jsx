@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 import icon from '../images/cryptocurrency.png'
 
 const Navbar = () => {
+
+  //Todo lo que hay desde aca hasta el return es para el menu opcional cuando la ventana es <768px
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(null);
 
@@ -37,8 +39,9 @@ const Navbar = () => {
       <div className='logo-container'>
         <Avatar src={icon} size="large"/>
         <Typography.Title level={2} className="logo">
-          <Link to="/">Cryptoverse</Link>
+          <Link to="/">Daily Cripto</Link>
         </Typography.Title>
+        {/* El Siguiente Botton es para menu en celulares*/}
         <Button className='menu-control-container' onClick={() => setActiveMenu(!activeMenu)}>
           <MenuOutlined />
         </Button>
